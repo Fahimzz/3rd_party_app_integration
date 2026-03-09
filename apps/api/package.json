@@ -1,0 +1,38 @@
+{
+  "name": "api",
+  "private": true,
+  "scripts": {
+    "start:dev": "node --watch --watch-path=src -r ts-node/register ./src/main.ts",
+    "build": "node ./node_modules/@nestjs/cli/bin/nest.js build",
+    "lint": "node ../../node_modules/.pnpm/typescript@5.9.3/node_modules/typescript/lib/tsc.js --noEmit",
+    "prisma": "node ../../node_modules/.pnpm/prisma@6.19.2_typescript@5.9.3/node_modules/prisma/build/index.js"
+  },
+  "dependencies": {
+    "@apollo/server": "^5.0.0",
+    "@as-integrations/express5": "^1.1.2",
+    "@nestjs/apollo": "^13.2.1",
+    "@nestjs/common": "^11.1.6",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/core": "^11.1.6",
+    "@nestjs/graphql": "^13.2.0",
+    "@nestjs/jwt": "^11.0.1",
+    "@nestjs/passport": "^11.0.5",
+    "@nestjs/platform-express": "^11.1.6",
+    "@prisma/client": "^6.5.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "graphql": "^16.11.0",
+    "passport": "^0.7.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.10",
+    "@nestjs/schematics": "^11.0.7",
+    "@nestjs/testing": "^11.1.6",
+    "@types/node": "^22.13.14",
+    "prisma": "^6.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}
