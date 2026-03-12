@@ -1,4 +1,4 @@
-generator client {
+﻿generator client {
   provider = "prisma-client-js"
 }
 
@@ -14,6 +14,7 @@ model User {
   createdAt      DateTime         @default(now())
   updatedAt      DateTime         @updatedAt
   jiraConnection JiraConnection?
+  githubConnection GithubConnection?
   tickets        Ticket[]
 }
 
@@ -40,3 +41,17 @@ model Ticket {
   createdAt   DateTime @default(now())
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+model GithubConnection {
+  id          String   @id @default(cuid())
+  userId      String   @unique
+  accessToken String
+  tokenType   String
+  scope       String
+  login       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+

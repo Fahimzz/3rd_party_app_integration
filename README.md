@@ -6,6 +6,10 @@ This repo contains a Jira integration MVP with a NestJS GraphQL API and a Next.j
 - `apps/api`: NestJS GraphQL API (Jira OAuth + issue creation)
 - `apps/web`: Next.js UI (login, connect Jira, create issue)
 
+## Docs
+- `docs/jira-integration.md`
+- `docs/github-integration.md`
+
 ## Prerequisites
 - Node.js 20+ (recommended)
 - pnpm

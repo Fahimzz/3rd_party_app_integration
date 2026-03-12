@@ -1,9 +1,10 @@
-import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
+﻿import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { AuthModule } from './auth/auth.module';
 import { JiraModule } from './jira/jira.module';
+import { GithubModule } from './github/github.module';
 import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
@@ -19,6 +20,9 @@ import { PrismaModule } from './prisma/prisma.module';
     PrismaModule,
     AuthModule,
     JiraModule,
+    GithubModule,
   ],
 })
 export class AppModule {}
+
+
