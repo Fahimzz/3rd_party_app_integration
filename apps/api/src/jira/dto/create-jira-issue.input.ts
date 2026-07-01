@@ -1,6 +1,50 @@
-import { Field, InputType } from '@nestjs/graphql';
-import { Transform } from 'class-transformer';
-import { IsArray, IsOptional, IsString, Matches, MinLength } from 'class-validator';
+import { Field, InputType, Int } from '@nestjs/graphql';
+import { Transform, Type } from 'class-transformer';
+import {
+  IsArray,
+  IsInt,
+  IsOptional,
+  IsString,
+  Matches,
+  Max,
+  MaxLength,
+  Min,
+  MinLength,
+  ValidateNested,
+} from 'class-validator';
+
+@InputType()
+export class JiraInlineImageInput {
+  @Field()
+  @IsString()
+  @MaxLength(80)
+  id!: string;
+
+  @Field()
+  @IsString()
+  @MaxLength(7_000_000)
+  dataUrl!: string;
+
+  @Field()
+  @IsString()
+  @MaxLength(255)
+  @Transform(({ value }) => (typeof value === 'string' ? value.trim() : value))
+  filename!: string;
+
+  @Field(() => Int, { nullable: true })
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Max(4096)
+  width?: number;
+
+  @Field(() => Int, { nullable: true })
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Max(4096)
+  height?: number;
+}
 
 @InputType()
 export class CreateJiraIssueInput {
@@ -23,6 +67,12 @@ export class CreateJiraIssueInput {
   @IsString()
   @MinLength(3)
   description!: string;
+
+  @Field({ nullable: true })
+  @IsOptional()
+  @IsString()
+  @MaxLength(500_000)
+  descriptionAdfJson?: string;
 
   @Field()
   @IsString()
@@ -50,4 +100,38 @@ export class CreateJiraIssueInput {
   @IsString()
   @Transform(({ value }) => (typeof value === 'string' ? value.trim() : value))
   assigneeAccountId?: string;
+
+  @Field({ nullable: true })
+  @IsOptional()
+  @IsString()
+  @MaxLength(7_000_000)
+  inlineImageDataUrl?: string;
+
+  @Field({ nullable: true })
+  @IsOptional()
+  @IsString()
+  @MaxLength(255)
+  @Transform(({ value }) => (typeof value === 'string' ? value.trim() : value))
+  inlineImageFilename?: string;
+
+  @Field(() => Int, { nullable: true })
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Max(4096)
+  inlineImageWidth?: number;
+
+  @Field(() => Int, { nullable: true })
+  @IsOptional()
+  @IsInt()
+  @Min(1)
+  @Max(4096)
+  inlineImageHeight?: number;
+
+  @Field(() => [JiraInlineImageInput], { nullable: true })
+  @IsOptional()
+  @IsArray()
+  @ValidateNested({ each: true })
+  @Type(() => JiraInlineImageInput)
+  inlineImages?: JiraInlineImageInput[];
 }

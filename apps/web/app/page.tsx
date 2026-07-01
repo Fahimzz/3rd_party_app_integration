@@ -3,6 +3,11 @@
 import { gql } from '@apollo/client';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import {
+  RichTextEditor,
+  type RichTextEditorValue,
+  type RichTextImageInput,
+} from './components/RichTextEditor';
 import { createApolloClient } from '../lib/graphql';
 
 const SIGNUP = gql`
@@ -75,6 +80,7 @@ const CREATE_ISSUE = gql`
       summary
       projectKey
       createdAt
+      notice
     }
   }
 `;
@@ -142,15 +148,28 @@ export default function HomePage() {
   const [assignees, setAssignees] = useState<
     Array<{ accountId: string; displayName: string; active: boolean }>
   >([]);
-  const [issueForm, setIssueForm] = useState({
+  const [issueForm, setIssueForm] = useState<{
+    projectKey: string;
+    summary: string;
+    description: string;
+    descriptionAdfJson: string;
+    inlineImages: RichTextImageInput[];
+    issueType: string;
+    labelsText: string;
+    priority: string;
+    assigneeAccountId: string;
+  }>({
     projectKey: '',
     summary: '',
     description: '',
+    descriptionAdfJson: '',
+    inlineImages: [],
     issueType: 'Task',
     labelsText: '',
     priority: '',
     assigneeAccountId: '',
   });
+  const [editorResetKey, setEditorResetKey] = useState(0);
   const [githubIssueForm, setGithubIssueForm] = useState({
     repoFullName: '',
     title: '',
@@ -341,17 +360,21 @@ export default function HomePage() {
         .filter(Boolean);
 
       const client = createApolloClient(token);
-      await client.mutate({
+      const result = await client.mutate<{
+        createJiraIssue: { jiraKey: string; notice?: string | null };
+      }>({
         mutation: CREATE_ISSUE,
         variables: {
           input: {
             projectKey: issueForm.projectKey,
             summary: issueForm.summary,
-            description: issueForm.description,
+            description: issueForm.description || issueForm.summary || 'Rich description',
+            descriptionAdfJson: issueForm.descriptionAdfJson || undefined,
             issueType: issueForm.issueType,
             labels,
             priority: issueForm.priority || undefined,
             assigneeAccountId: issueForm.assigneeAccountId || undefined,
+            inlineImages: issueForm.inlineImages.length ? issueForm.inlineImages : undefined,
           },
         },
       });
@@ -361,15 +384,32 @@ export default function HomePage() {
         ...current,
         summary: '',
         description: '',
+        descriptionAdfJson: '',
+        inlineImages: [],
         issueType: 'Task',
         labelsText: '',
         priority: '',
         assigneeAccountId: '',
       }));
-      setStatus('Issue created');
+      setEditorResetKey((current) => current + 1);
+      const created = result.data?.createJiraIssue;
+      setStatus(
+        created?.notice
+          ? `Issue ${created.jiraKey} created. ${created.notice}`
+          : 'Issue created',
+      );
     } catch (error) {
       setStatus(error instanceof Error ? error.message : 'Issue creation failed');
     }
+  }
+
+  function handleRichDescriptionChange(value: RichTextEditorValue) {
+    setIssueForm((current) => ({
+      ...current,
+      description: value.plainText,
+      descriptionAdfJson: value.adfJson,
+      inlineImages: value.images,
+    }));
   }
 
   async function handleCreateGithubIssue() {
@@ -548,12 +588,11 @@ export default function HomePage() {
               />
             </label>
             <label className="field">
-              <span>Description</span>
-              <textarea
-                value={issueForm.description}
-                onChange={(event) =>
-                  setIssueForm((current) => ({ ...current, description: event.target.value }))
-                }
+              <span>Rich description</span>
+              <RichTextEditor
+                resetKey={editorResetKey}
+                onChange={handleRichDescriptionChange}
+                onStatus={setStatus}
               />
             </label>
             <label className="field">
@@ -769,4 +808,3 @@ export default function HomePage() {
     </main>
   );
 }
-

@@ -19,4 +19,7 @@ export class JiraTicketDto {
 
   @Field()
   createdAt!: Date;
+
+  @Field({ nullable: true })
+  notice?: string;
 }

@@ -98,7 +98,8 @@ textarea {
 }
 
 .field input,
-.field textarea {
+.field textarea,
+.field select {
   width: 100%;
   border: 1px solid var(--border);
   border-radius: 12px;
@@ -124,6 +125,140 @@ textarea {
 .button:disabled {
   opacity: 0.6;
   cursor: wait;
+}
+
+.button-secondary {
+  background: #39464e;
+}
+
+.inline-image-preview {
+  display: grid;
+  gap: 10px;
+}
+
+.inline-image-preview img {
+  width: min(100%, 360px);
+  max-height: 220px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  object-fit: contain;
+  background: var(--card);
+}
+
+.rich-editor {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--card);
+  overflow: hidden;
+}
+
+.rich-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+  background: #f7f8f5;
+}
+
+.rich-toolbar button {
+  min-width: 34px;
+  min-height: 32px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.85rem;
+}
+
+.rich-toolbar button:hover {
+  border-color: var(--accent);
+}
+
+.rich-editor-surface {
+  min-height: 220px;
+  padding: 14px;
+  outline: none;
+  overflow-x: auto;
+}
+
+.rich-editor-surface:empty::before {
+  content: attr(data-placeholder);
+  color: var(--muted);
+}
+
+.rich-editor-surface p,
+.rich-editor-surface h1,
+.rich-editor-surface h2,
+.rich-editor-surface h3,
+.rich-editor-surface ul,
+.rich-editor-surface ol,
+.rich-editor-surface blockquote,
+.rich-editor-surface pre,
+.rich-editor-surface table,
+.rich-editor-surface figure {
+  margin: 0 0 12px;
+}
+
+.rich-editor-surface h1 {
+  font-size: 1.8rem;
+}
+
+.rich-editor-surface h2 {
+  font-size: 1.4rem;
+}
+
+.rich-editor-surface blockquote {
+  border-left: 4px solid var(--accent);
+  padding-left: 12px;
+  color: var(--muted);
+}
+
+.rich-editor-surface pre {
+  padding: 12px;
+  border-radius: 8px;
+  background: #222927;
+  color: #f7fff9;
+  white-space: pre-wrap;
+}
+
+.rich-editor-surface table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.rich-editor-surface td,
+.rich-editor-surface th {
+  min-width: 92px;
+  border: 1px solid var(--border);
+  padding: 8px;
+  vertical-align: top;
+}
+
+.rich-editor-surface figure {
+  display: grid;
+  gap: 8px;
+}
+
+.rich-editor-surface img {
+  max-width: min(100%, 520px);
+  max-height: 320px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  object-fit: contain;
+  background: #ffffff;
+}
+
+.rich-editor-surface figcaption {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.hidden-file-input {
+  display: none;
 }
 
 .subtle {
