@@ -49,7 +49,12 @@ export class JiraService {
     ).toString('base64url');
     const clientId = this.configService.getOrThrow<string>('JIRA_CLIENT_ID');
     const redirectUri = this.configService.getOrThrow<string>('JIRA_CALLBACK_URL');
-    const scope = ['manage:jira-webhook', 'read:jira-work', 'write:jira-work'].join(' ');
+    const scope = [
+      'manage:jira-webhook',
+      'read:jira-user',
+      'read:jira-work',
+      'write:jira-work',
+    ].join(' ');
 
     const params = new URLSearchParams({
       audience: 'api.atlassian.com',
@@ -267,6 +272,7 @@ export class JiraService {
     }
 
     const users = (await response.json()) as JiraAssignableUser[];
+    console.log('Assignable users:', users); // Debugging line to log the response
     return users.map((user) => ({
       accountId: user.accountId,
       displayName: user.displayName,

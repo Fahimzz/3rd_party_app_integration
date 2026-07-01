@@ -197,7 +197,7 @@ Minimal variables:
 
 Example:
 
-- Missing scopes like `manage:jira-webhook`, `read:jira-work`, or `write:jira-work`.
+- Missing scopes like `manage:jira-webhook`, `read:jira-user`, `read:jira-work`, or `write:jira-work`.
 
 Fix:
 

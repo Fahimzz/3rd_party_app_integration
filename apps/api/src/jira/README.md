@@ -23,6 +23,7 @@ The API runs on port `4000` and exposes GraphQL at `/graphql`.
 ## Required Jira OAuth scopes
 The Atlassian app must request these scopes (configured in the Atlassian developer console):
 - `read:jira-work`
+- `read:jira-user`
 - `write:jira-work`
 - `manage:jira-webhook`
 

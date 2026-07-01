@@ -84,12 +84,6 @@ importers:
         specifier: ^5.8.2
         version: 5.9.3
 
-  apps/forge:
-    dependencies:
-      '@forge/api':
-        specifier: ^5.1.0
-        version: 5.3.0
-
   apps/web:
     dependencies:
       '@apollo/client':
@@ -293,24 +287,6 @@ packages:
 
   '@emnapi/runtime@1.8.1':
     resolution: {integrity: sha512-mehfKSMWjjNol8659Z8KxEMrdSJDDot5SXMq00dM8BN4o+CLNXQ0xH2V7EchNHV4RmbZLmmPdEaXZc5H2FXmDg==}
-
-  '@forge/api@5.3.0':
-    resolution: {integrity: sha512-ebrmGpBV/E8vjpQYNFTxzKDzT78ub2UMYQua0Z7ullcRPUBAO5f644qm/IKb7za36d0ci1e+9jM85w6puA1nTw==}
-
-  '@forge/auth@0.0.8':
-    resolution: {integrity: sha512-nsI81rMYJz9qXSWrKiK6/ph0QIjwEUrBlUa6P/2+s8Gwwur/U82SDux3A25o4rbsqLdqWdpOTi/iRSKL1zUZfQ==}
-
-  '@forge/egress@1.4.1':
-    resolution: {integrity: sha512-RUHQBsIc3IkQKT46cKSmqHzTfwh7pBbgzXtfGwN14ztcu+1xUqCf71f/LJvq3m4jdymtrQXHE5C8BN0yRGwRKg==}
-
-  '@forge/i18n@0.0.6':
-    resolution: {integrity: sha512-iIK0SxWwMUHp8ThYiBU+Cq/ty1Ng1dGEr+apWbh6SwbxaXWR8MGRr91AFj3BLLAiC6FXYprIBclgI8tRf0DxmA==}
-
-  '@forge/storage@1.8.1':
-    resolution: {integrity: sha512-wPssW7sIuoM6aN3xHtO5MFU3bJ/i3mJ1Yo8U10qMegKC0kO+KDe6JE/GTOjoPc0JqtCPCiTnT9OgxFUXzwIElQ==}
-
-  '@forge/util@1.4.9':
-    resolution: {integrity: sha512-ZLSXBRnIo/KRk3PKz7tb1YSywSHZCTY2JvG9OoU+qx1zU/rDPSP1K+72iBU7lK0x99eAraA5qEpZwPWaUIbBTw==}
 
   '@graphql-tools/merge@9.1.7':
     resolution: {integrity: sha512-Y5E1vTbTabvcXbkakdFUt4zUIzB1fyaEnVmIWN0l0GMed2gdD01TpZWLUm4RNAxpturvolrb24oGLQrBbPLSoQ==}
@@ -1155,9 +1131,6 @@ packages:
   brace-expansion@1.1.12:
     resolution: {integrity: sha512-9T9UjW3r0UW5c1Q7GTwllptXwhvYmEzFhzMfZ9H7FQWt+uZePjZPjBP/W1ZEyZ1twGWom5/56TF4lPcqjnDHcg==}
 
-  brace-expansion@2.0.2:
-    resolution: {integrity: sha512-Jt0vHyM+jmUBqojB7E1NIYadt0vI0Qxjxd2TErW94wDz+E2LAm5vKMXXwg6ZZBTHPuUlDgQHKXvjGBdfcF1ZDQ==}
-
   brace-expansion@5.0.4:
     resolution: {integrity: sha512-h+DEnpVvxmfVefa4jFbCf5HdH5YMDXRsmKflpf1pILZWRFlTbJpxeU55nJl4Smt5HQaGzg1o6RHFPJaOqnmBDg==}
     engines: {node: 18 || 20 || >=22}
@@ -1630,9 +1603,6 @@ packages:
     resolution: {integrity: sha512-0hJU9SCPvmMzIBdZFqNPXWa6dqh7WdH0cII9y+CyS8rG3nL48Bclra9HmKhVVUHyPWNH5Y7xDwAB7bfgSjkUMQ==}
     engines: {node: '>= 0.4'}
 
-  headers-utils@3.0.2:
-    resolution: {integrity: sha512-xAxZkM1dRyGV2Ou5bzMxBPNLoRCjcX+ya7KSWybQD2KwLphxsapUVK6x/02o7f4VU6GPSXch9vNY2+gkU8tYWQ==}
-
   hoist-non-react-statics@3.3.2:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
 
@@ -1878,10 +1848,6 @@ packages:
 
   minimatch@3.1.5:
     resolution: {integrity: sha512-VgjWUsnnT6n+NUk6eZq77zeFdpW2LWDzP6zFGrCbHXiYNul5Dzqk2HHQ5uFH2DNW5Xbp8+jVzaeNt94ssEEl4w==}
-
-  minimatch@9.0.9:
-    resolution: {integrity: sha512-OBwBN9AL4dqmETlpS2zasx+vTeWclWzkblfZk7KTA5j3jeOONz/tRCnZomUyvNg83wL5Zv9Ss6HMJXAgL8R2Yg==}
-    engines: {node: '>=16 || 14 >=14.17'}
 
   minimist@1.2.8:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
@@ -2765,31 +2731,6 @@ snapshots:
       tslib: 2.8.1
     optional: true
 
-  '@forge/api@5.3.0':
-    dependencies:
-      '@forge/auth': 0.0.8
-      '@forge/egress': 1.4.1
-      '@forge/i18n': 0.0.6
-      '@forge/storage': 1.8.1
-      '@forge/util': 1.4.9
-      headers-utils: 3.0.2
-
-  '@forge/auth@0.0.8':
-    dependencies:
-      tslib: 2.8.1
-
-  '@forge/egress@1.4.1':
-    dependencies:
-      minimatch: 9.0.9
-
-  '@forge/i18n@0.0.6':
-    dependencies:
-      lodash: 4.17.23
-
-  '@forge/storage@1.8.1': {}
-
-  '@forge/util@1.4.9': {}
-
   '@graphql-tools/merge@9.1.7(graphql@16.13.0)':
     dependencies:
       '@graphql-tools/utils': 11.0.0(graphql@16.13.0)
@@ -3607,10 +3548,6 @@ snapshots:
       balanced-match: 1.0.2
       concat-map: 0.0.1
 
-  brace-expansion@2.0.2:
-    dependencies:
-      balanced-match: 1.0.2
-
   brace-expansion@5.0.4:
     dependencies:
       balanced-match: 4.0.4
@@ -4082,8 +4019,6 @@ snapshots:
     dependencies:
       function-bind: 1.1.2
 
-  headers-utils@3.0.2: {}
-
   hoist-non-react-statics@3.3.2:
     dependencies:
       react-is: 16.13.1
@@ -4286,10 +4221,6 @@ snapshots:
   minimatch@3.1.5:
     dependencies:
       brace-expansion: 1.1.12
-
-  minimatch@9.0.9:
-    dependencies:
-      brace-expansion: 2.0.2
 
   minimist@1.2.8: {}
 

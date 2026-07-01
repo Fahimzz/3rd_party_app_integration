@@ -60,6 +60,7 @@ Then:
 ## Jira OAuth requirements
 The Atlassian app must include these scopes:
 - `read:jira-work`
+- `read:jira-user`
 - `write:jira-work`
 - `manage:jira-webhook`
 

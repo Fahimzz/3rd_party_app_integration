@@ -14,6 +14,7 @@ Set in `apps/web/.env.local` (see `.env.example`):
 ## Required Jira OAuth scopes
 These are requested by the backend and must be enabled in the Atlassian app:
 - `read:jira-work`
+- `read:jira-user`
 - `write:jira-work`
 - `manage:jira-webhook`
 

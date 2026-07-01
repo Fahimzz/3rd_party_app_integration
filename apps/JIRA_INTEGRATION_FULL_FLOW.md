@@ -63,6 +63,7 @@ The Atlassian OAuth app must be configured with:
 Required Jira OAuth scopes:
 
 - `read:jira-work`
+- `read:jira-user`
 - `write:jira-work`
 - `manage:jira-webhook`
 
